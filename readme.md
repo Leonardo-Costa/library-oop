@@ -114,6 +114,134 @@ if __name__ == "__main__":
     main()
 ```
 
+## Diagrama UML
+
+```mermaid
+classDiagram
+    class CatalogAdapterInterface {
+        +search_books(title, author, category)
+    }
+    class ExternalCatalogAdapter1 {
+        +search_books(title, author, category)
+    }
+    class ExternalCatalogAdapter2 {
+        +search_books(title, author, category)
+    }
+    class CompositeCatalogAdapter {
+        -adapters
+        +search_books(title, author, category)
+    }
+    class LibraryMediator {
+        -catalog_adapter
+        -loan_manager
+        +search_books(title, author, category)
+        +borrow_book(book, user)
+        +return_book(book, user)
+    }
+    class LibraryFacade {
+        -mediator
+        -books
+        -users
+        -notifier
+        +add_book(book)
+        +add_user(user)
+        +search_books(title, author, category)
+        +borrow_book(book_id, user_id)
+        +return_book(book_id, user_id)
+        +get_user_loan_history(user_id)
+    }
+    class BookCategory {
+        -name
+        -subcategories
+        +add_subcategory(subcategory)
+        +get_all_subcategories()
+    }
+    class Book {
+        -book_id
+        -title
+        -author
+        -category
+        -is_available
+    }
+    class Observer {
+        +update(message)
+    }
+    class User {
+        -user_id
+        -name
+        -user_type
+        -loan_history
+        -borrowed_books
+        +update(message)
+        +add_to_history(book, action)
+        +get_loan_history()
+        +get_borrowed_books()
+        +borrow_book(book)
+        +return_book(book)
+    }
+    class StudentUser {
+    }
+    class TeacherUser {
+    }
+    class EmployeeUser {
+    }
+    class Loan {
+        -book
+        -user
+    }
+    class LoanManager {
+        -loans
+        -chain
+        +borrow_book(book, user)
+        +return_book(book, user)
+    }
+    class ConfigurationManager {
+        -_configurations
+        +get_configuration(key)
+        +set_configuration(key, value)
+    }
+    class BookAvailabilityNotifier {
+        -observers
+        +register_observer(observer)
+        +unregister_observer(observer)
+        +notify_observers(message)
+    }
+    class Handler {
+        +handle(*args, **kwargs)
+    }
+    class BookAvailabilityHandler {
+        +handle(book, user)
+    }
+    class UserEligibilityHandler {
+        +handle(book, user)
+    }
+    class LoanLimitHandler {
+        +handle(book, user)
+    }
+
+    CatalogAdapterInterface <|-- ExternalCatalogAdapter1
+    CatalogAdapterInterface <|-- ExternalCatalogAdapter2
+    CatalogAdapterInterface <|-- CompositeCatalogAdapter
+    CompositeCatalogAdapter o-- CatalogAdapterInterface
+    LibraryMediator o-- CompositeCatalogAdapter
+    LibraryMediator o-- LoanManager
+    LibraryFacade o-- LibraryMediator
+    LibraryFacade o-- BookAvailabilityNotifier
+    User <|-- StudentUser
+    User <|-- TeacherUser
+    User <|-- EmployeeUser
+    LoanManager o-- Loan
+    LoanManager o-- Handler
+    Handler <|-- BookAvailabilityHandler
+    Handler <|-- UserEligibilityHandler
+    Handler <|-- LoanLimitHandler
+    Loan o-- Book
+    Loan o-- User
+    Book o-- BookCategory
+    BookAvailabilityNotifier o-- Observer
+    User o-- Observer
+    ConfigurationManager "1" -- "*" LoanLimitHandler : singleton instance
+```
 
 Contato
 Leonardo Loureiro Costa - leonardo.costa@unifesp.br
