@@ -1,5 +1,4 @@
 from core.loan import Loan
-from core.configuration_manager import ConfigurationManager
 from handlers.book_availability_handler import BookAvailabilityHandler
 from handlers.user_eligibility_handler import UserEligibilityHandler
 from handlers.loan_limit_handler import LoanLimitHandler
