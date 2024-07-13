@@ -1,3 +1,15 @@
+- [Sistema de Biblioteca](#sistema-de-biblioteca)
+  - [Estrutura do Projeto](#estrutura-do-projeto)
+  - [Descrição das Classes](#descrição-das-classes)
+  - [Instruções de Uso](#instruções-de-uso)
+    - [Pré-requisitos](#pré-requisitos)
+    - [Instalação](#instalação)
+    - [Executando o Projeto](#executando-o-projeto)
+  - [Funcionalidades](#funcionalidades)
+  - [Exemplo de Uso](#exemplo-de-uso)
+  - [Diagrama UML](#diagrama-uml)
+  - [Contato](#contato)
+
 # Sistema de Biblioteca
 Este projeto é um sistema de biblioteca implementado em Python que utiliza diversos padrões de design para facilitar a busca, empréstimo e devolução de livros, além de gerenciar categorias de livros, usuários, e notificações.
 
