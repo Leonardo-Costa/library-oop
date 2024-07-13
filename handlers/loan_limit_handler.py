@@ -9,5 +9,5 @@ class LoanLimitHandler(Handler):
     def handle(self, book, user):
         user_type_limit = self.config_manager.get_configuration(f"{user.user_type}LoanLimit")
         if len(user.get_borrowed_books()) >= user_type_limit:
-            return f"{user.user_type}s can only borrow up to {user_type_limit} books."
+            return f"Error borrowing book '{book.title}' by user '{user.name}'. {user.user_type}s can only borrow up to {user_type_limit} books."
         return super().handle(book, user)
