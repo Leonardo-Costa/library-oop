@@ -91,40 +91,50 @@ Para começar a usar o sistema de biblioteca, execute o script main.py:
 ```
 python main.py
 ```
+
+### Usando o `library_cli.py`
+O library_cli.py fornece uma interface de linha de comando interativa para interagir com o sistema de biblioteca. Você pode executar o CLI com o seguinte comando:
+
+```
+python library_cli.py
+```
+
 ## Funcionalidades
 
 O sistema de biblioteca oferece as seguintes funcionalidades principais:
 
-1. Buscar Livros: Pesquisa livros disponíveis no sistema e em catálogos externos por título, autor ou categoria.
-2. Emprestar Livros: Permite que usuários qualificados empréstem livros disponíveis.
+1. Buscar Livros: Pesquisa livros disponíveis no sistema por título, autor ou categoria.
+2. Emprestar Livros: Permite que usuários qualificados emprestem livros disponíveis.
 3. Devolver Livros: Permite que usuários devolvam livros que emprestaram.
-4. Gerenciar Categorias: Adiciona e gerencia categorias de livros de forma hierárquica.
-5. Notificar Usuários: Notifica usuários sobre eventos importantes, como adição de novos livros ou empréstimos bem-sucedidos.
+4. Consultar Histórico de Empréstimos: Consulta o histórico de empréstimos de um usuário específico.
+5. Atualizar Limites de Empréstimos: Define novos limites de empréstimos para diferentes papéis de usuários.
+6. Adicionar Livros: Adiciona novos livros ao catálogo da biblioteca.
+7. Limpar Tela: Limpa a tela do terminal para uma melhor visualização.
+8. Sair do CLI: Encerra a sessão do CLI.
 
-## Exemplo de Uso
-No arquivo main.py, há exemplos de como adicionar livros e usuários, buscar livros, emprestar e devolver livros. Aqui está um pequeno exemplo:
+## Exemplo de utilização da CLI
+```bash
+(biblioteca) search_by_title Python Programming
+Livros encontrados com o título 'Python Programming':
+Book ID: 1, Title: Python Programming, Author: John Doe, Category: Programming
 
-```python
-from core.library_facade import LibraryFacade
-from core.book_category import BookCategory
-from core.book import Book
-from core.user import StudentUser
+(biblioteca) borrow_book 1 1
+Empréstimo realizado com sucesso!
 
-def main():
-    library = LibraryFacade()
+(biblioteca) get_user_loan_history 1
+Histórico de empréstimos do usuário 1:
+Livro: Python Programming, Ação: Emprestado
 
-    programming_category = BookCategory("Programming")
-    library.add_book(Book(1, "Python Programming", "John Doe", programming_category))
+(biblioteca) set_loan_limit Student 5
+Novo limite de empréstimos para estudantes: 5
 
-    student = StudentUser(1, "Alice")
-    library.add_user(student)
+(biblioteca) add_book 6 "Advanced Java" "James Gosling" "Programming"
+Livro 'Advanced Java' adicionado com sucesso.
 
-    print(library.search_books(title="Python"))  # Busca livros pelo título "Python"
-    print(library.borrow_book(1, 1))             # Empréstimo do livro com ID 1 pelo usuário com ID 1
-    print(library.return_book(1, 1))             # Devolução do livro com ID 1 pelo usuário com ID 1
+(biblioteca) return_book 1 1
+Devolução realizada com sucesso!
 
-if __name__ == "__main__":
-    main()
+(biblioteca) clear
 ```
 
 ## Diagrama UML
@@ -258,5 +268,6 @@ classDiagram
 
 Contato
 Leonardo Loureiro Costa - leonardo.costa@unifesp.br
+Rafael Yan da Silva - rafael.yan@unifesp.br
 
 Link do Projeto: https://github.com/Leonardo-Costa/library-oop
