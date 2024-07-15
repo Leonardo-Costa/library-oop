@@ -100,8 +100,9 @@ O sistema de biblioteca oferece as seguintes funcionalidades principais:
 3. Devolver Livros: Permite que usuários devolvam livros que emprestaram.
 4. Gerenciar Categorias: Adiciona e gerencia categorias de livros de forma hierárquica.
 5. Notificar Usuários: Notifica usuários sobre eventos importantes, como adição de novos livros ou empréstimos bem-sucedidos.
-6. Exemplo de Uso
-7. No arquivo main.py, há exemplos de como adicionar livros e usuários, buscar livros, emprestar e devolver livros. Aqui está um pequeno exemplo:
+
+## Exemplo de Uso
+No arquivo main.py, há exemplos de como adicionar livros e usuários, buscar livros, emprestar e devolver livros. Aqui está um pequeno exemplo:
 
 ```python
 from core.library_facade import LibraryFacade
