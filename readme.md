@@ -266,7 +266,7 @@ classDiagram
     ConfigurationManager "1" -- "*" LoanLimitHandler : singleton instance
 ```
 
-Contato
+### Contato
 Leonardo Loureiro Costa - leonardo.costa@unifesp.br
 Rafael Yan da Silva - rafael.yan@unifesp.br
 
